@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <!--
+                Add menu items here
+                Menu items with icon and Title
+        -->
+        <item
+            android:id="@+id/it_add"
+            android:icon="@mipmap/ic_launcher"
+            android:title="LIST Get" />
+        <item
+            android:id="@+id/it_list"
+            android:icon="@mipmap/ic_launcher"
+            android:title="ADD Details" />
+
+        <item
+            android:id="@+id/it_logout"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Logout" />
+
+    </group>
+</menu>
