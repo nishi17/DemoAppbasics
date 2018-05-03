@@ -107,15 +107,30 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         finish();
                         Intent i_main = new Intent(context, NavigationActivity.class);
                         startActivity(i_main);
+                    } else {
+
+                        if (email.equalsIgnoreCase(etemail)) {
+
+                            if (password.equalsIgnoreCase(etpass)) {
+
+                            } else {
+                                memory.showToast(context, "Please Enter Valid Password");
+                            }
+
+
+                        } else {
+                            memory.showToast(context, "Please Enter Valid Id");
+
+                        }
                     }
 
                 } while (cursor.moveToNext());
 
-            }else {
+            } else {
                 memory.showToast(context, "Please Register");
             }
 
-        }else {
+        } else {
             memory.showToast(context, "Please No User");
         }
 

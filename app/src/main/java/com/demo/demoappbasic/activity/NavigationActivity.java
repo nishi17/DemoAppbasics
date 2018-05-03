@@ -2,6 +2,7 @@ package com.demo.demoappbasic.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -22,7 +23,7 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
     private DrawerLayout dLayout;
     private ImageView ev_navIcon;
     private NavigationView navigationView;
-
+    private boolean doubleBackToExitPressedOnce = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +84,7 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
                 if (frag != null) {
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                     transaction.replace(R.id.frame, frag); // replace a Fragment with Frame Layout
+					transaction.addToBackStack(null);
                     transaction.commit(); // commit the changes
                     dLayout.closeDrawers(); // close the all open Drawer Views
                     return true;
@@ -94,4 +96,59 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
 
 
     }
+
+
+    @Override
+    public void onBackPressed() {
+
+      /*  int count = getFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
+                return;
+            }
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce=false;
+                }
+            }, 1000);
+            //additional code
+        } else {
+            getFragmentManager().popBackStack();
+        }*/
+
+        if (dLayout.isDrawerOpen(Gravity.LEFT)) {
+
+            dLayout.closeDrawers();
+        }
+
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else if (!doubleBackToExitPressedOnce) {
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        } else {
+            super.onBackPressed();
+            return;
+        }
+
+    }
+
+
 }
