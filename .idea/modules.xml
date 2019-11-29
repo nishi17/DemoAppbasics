@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/AndroidBasics.iml" filepath="$PROJECT_DIR$/.idea/AndroidBasics.iml" />
       <module fileurl="file://$PROJECT_DIR$/DemoAppBasic.iml" filepath="$PROJECT_DIR$/DemoAppBasic.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

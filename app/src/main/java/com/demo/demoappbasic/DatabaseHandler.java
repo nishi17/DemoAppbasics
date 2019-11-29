@@ -10,6 +10,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
+    /* For query for DAABASE_VERSION visit
+     * https://stackoverflow.com/questions/25117972/what-is-the-use-of-db-version-attribute-in-sq-lite-database-in-android */
+
+
     public static final int DAABASE_VERSION = 8;
 
 

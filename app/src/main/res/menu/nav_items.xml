@@ -19,5 +19,27 @@
             android:icon="@mipmap/ic_launcher"
             android:title="Logout" />
 
+        <item
+            android:id="@+id/it_option_menu"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Option Menu" />
+        <item
+            android:id="@+id/it_context_menu"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Context Menu" />
+
+        <item
+            android:id="@+id/it_popup_menu"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Popup Menu" />
+
+
+        <item
+            android:id="@+id/it_service"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Service" />
+
+
+
     </group>
 </menu>

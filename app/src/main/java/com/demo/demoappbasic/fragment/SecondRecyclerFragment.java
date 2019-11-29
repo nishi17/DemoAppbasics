@@ -8,13 +8,16 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.demo.demoappbasic.DatabaseHandler;
 import com.demo.demoappbasic.R;
+import com.demo.demoappbasic.RecyclerViewClickListener;
 import com.demo.demoappbasic.common.CoomonClasss;
 import com.demo.demoappbasic.common.Memory;
 import com.demo.demoappbasic.model.DataArea;
@@ -33,6 +36,7 @@ public class SecondRecyclerFragment extends Fragment {
     public ArrayList<DataArea> dataAreas;
     private TextView txt_nodata;
     private RecyclerView recyclerView;
+    private RecyclerViewClickListener listener;
 
 
     @Override
@@ -46,8 +50,8 @@ public class SecondRecyclerFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
 
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        RecyclerView.LayoutParams params = new    RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
-        params.setMargins(0,0,0,0);
+        RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0, 0, 0, 0);
         recyclerView.setLayoutManager(layoutManager);
         retriveDATA();
 
@@ -101,7 +105,17 @@ public class SecondRecyclerFragment extends Fragment {
             recyclerView.setVisibility(View.GONE);
         }
 
-        ListViewAdapterrecyclerView listViewAdapter = new ListViewAdapterrecyclerView(getActivity(), dataAreas);
+
+        listener = new RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int position, Object o, int arraySize) {
+
+                Toast.makeText(context, "Click on " + position + " position ", Toast.LENGTH_SHORT).show();
+            }
+        };
+
+
+        ListViewAdapterrecyclerView listViewAdapter = new ListViewAdapterrecyclerView(getActivity(), dataAreas, listener);
 
         recyclerView.setAdapter(listViewAdapter);
     }

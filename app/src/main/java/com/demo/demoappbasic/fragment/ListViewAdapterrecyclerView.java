@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.demo.demoappbasic.R;
+import com.demo.demoappbasic.RecyclerViewClickListener;
 import com.demo.demoappbasic.model.DataArea;
 
 import java.util.List;
@@ -20,11 +21,12 @@ class ListViewAdapterrecyclerView extends RecyclerView.Adapter<ListViewAdapterre
 
     private Context context;
     private List<DataArea> dataAreas;
+    private RecyclerViewClickListener mListener;
 
-
-    public ListViewAdapterrecyclerView(Context context, List<DataArea> dataAreas) {
+    public ListViewAdapterrecyclerView(Context context, List<DataArea> dataAreas, RecyclerViewClickListener listener) {
         this.context = context;
         this.dataAreas = dataAreas;
+        this.mListener = listener;
     }
 
     @Override
@@ -33,8 +35,8 @@ class ListViewAdapterrecyclerView extends RecyclerView.Adapter<ListViewAdapterre
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.list_item, parent, false);
 
-      //  context = parent.getContext();
-        return new MyViewHolder(itemView);
+        //  context = parent.getContext();
+        return new MyViewHolder(itemView, mListener);
     }
 
     @Override
@@ -53,18 +55,29 @@ class ListViewAdapterrecyclerView extends RecyclerView.Adapter<ListViewAdapterre
         return dataAreas.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private RecyclerViewClickListener mListener;
         TextView txt_city, txt_state, txt_country;
 
-        public MyViewHolder(View itemView) {
+        public MyViewHolder(View itemView, RecyclerViewClickListener listener) {
             super(itemView);
+            mListener = listener;
 
 
             txt_city = (TextView) itemView.findViewById(R.id.tv_city_data);
+            txt_city.setOnClickListener(this);
             txt_state = (TextView) itemView.findViewById(R.id.tv_state_data);
             txt_country = (TextView) itemView.findViewById(R.id.tv_country_data);
 
         }
+
+
+        @Override
+        public void onClick(View v) {
+            mListener.onClick(v, getAdapterPosition(), /*list.get(getAdapterPosition())*/null, /*list.size()*/0);
+
+        }
     }
+
+
 }

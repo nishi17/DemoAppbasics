@@ -100,7 +100,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_weight="0.65"
-            android:imeOptions="actionNext"
+            android:imeOptions="actionDone"
             android:inputType="textEmailAddress"
             android:maxLines="1" />
 

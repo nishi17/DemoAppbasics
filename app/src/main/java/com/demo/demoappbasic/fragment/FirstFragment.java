@@ -74,7 +74,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
         contentValues.put(DatabaseHandler.A_CITY, city);
         contentValues.put(DatabaseHandler.A_STATE, state);
         contentValues.put(DatabaseHandler.A_COUNTRY, country);
-        contentValues.put(DatabaseHandler.A_P_ID, memory.getIntValue(CoomonClasss.CurreentUseriD,0));
+        contentValues.put(DatabaseHandler.A_P_ID, memory.getIntValue(CoomonClasss.CurreentUseriD, 0));
 
         helper.insert(DatabaseHandler.TABLE_AREA, null, contentValues);
 
